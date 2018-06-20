@@ -1,5 +1,20 @@
 <!-- Components info: https://webdev.dartlang.org/components -->
 <div>
+    <div class="horiz">
+        <div id="sign-in" *ngIf="todoListService.user == null" class="horiz">
+          <div id="google-icon" class="icon"></div>
+          <material-button  (trigger)="todoListService.signIn()">Google Sign In
+            </material-button>
+        </div>
+      
+        <div id="sign-out" *ngIf="todoListService.user != null" class="horiz">
+            <img class="icon" [src]="todoListService.user?.photoURL">
+            <div id="user-name">{{todoListService.user?.displayName}}</div>
+            <material-button  (trigger)="todoListService.signOut()">Sign Out
+              </material-button>
+        </div>
+      </div>
+
   <material-input label="What do you need to do?"
                   autoFocus floatingLabel style="width:80%"
                   [(ngModel)]="newTodo"
