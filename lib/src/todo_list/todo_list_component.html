@@ -44,3 +44,15 @@
       </li>
   </ul>
 </div>
+
+<p *ngIf="todoListService.users?.isEmpty">
+  There is no active users
+</p>
+
+<div *ngIf="todoListService.users?.isNotEmpty">
+  <ul>
+      <li *ngFor="let user of todoListService.users; let i=index">
+          {{user}}
+      </li>
+  </ul>
+</div>

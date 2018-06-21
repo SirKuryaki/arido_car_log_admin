@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:firebase/firebase.dart' as fb;
+import 'package:firebase/firestore.dart' as fs;
 
 import 'package:angular/core.dart';
 
@@ -14,8 +15,10 @@ class TodoListService {
 
   fb.Auth _fbAuth;
   fb.GoogleAuthProvider _fbGoogleAuthProvider;
+  
+  List<String> users;
 
-  TodoListService(){
+  TodoListService() {
     fb.initializeApp(
           apiKey:"XXX",
           authDomain: "XXX",
@@ -27,6 +30,16 @@ class TodoListService {
     _fbGoogleAuthProvider = new fb.GoogleAuthProvider();
     _fbAuth = fb.auth();
     _fbAuth.onAuthStateChanged.listen(_authChanged);
+
+    fs.Firestore firestore = fb.firestore();
+    fs.CollectionReference ref = firestore.collection("users");
+
+    ref.onSnapshot.listen((querySnapshot) {
+      users = new List();
+      for (var doc in querySnapshot.docs) {
+        users.add(doc.id);
+      }
+    });
   }
 
   void _authChanged(fb.User fbUser) {
@@ -36,8 +49,7 @@ class TodoListService {
   Future signIn() async {
     try {
       await _fbAuth.signInWithPopup(_fbGoogleAuthProvider);
-    }
-    catch (error) {
+    } catch (error) {
       print("$runtimeType::login() -- $error");
     }
   }
