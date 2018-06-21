@@ -15,7 +15,7 @@ class TodoListService {
 
   fb.Auth _fbAuth;
   fb.GoogleAuthProvider _fbGoogleAuthProvider;
-  
+
   List<String> users;
 
   TodoListService() {
