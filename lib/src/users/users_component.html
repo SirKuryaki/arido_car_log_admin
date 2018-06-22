@@ -1,0 +1,28 @@
+<div>
+    <div class="horiz">
+        <div id="sign-in" *ngIf="usersService.user == null" class="horiz">
+            <div id="google-icon" class="icon"></div>
+            <material-button (trigger)="usersService.signIn()">Google Sign In
+            </material-button>
+        </div>
+
+        <div id="sign-out" *ngIf="usersService.user != null" class="horiz">
+            <img class="icon" [src]="usersService.user?.photoURL">
+            <div id="user-name">{{usersService.user?.displayName}}</div>
+            <material-button (trigger)="usersService.signOut()">Sign Out
+            </material-button>
+        </div>
+    </div>
+</div>
+
+<p *ngIf="usersService.users?.isEmpty">
+    There is no active users
+</p>
+
+<div *ngIf="usersService.users?.isNotEmpty">
+    <ul>
+        <li *ngFor="let user of usersService.users; let i=index">
+            {{user}}
+        </li>
+    </ul>
+</div>
