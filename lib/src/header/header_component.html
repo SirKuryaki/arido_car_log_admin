@@ -1,1 +1,14 @@
-<h7>Arido Car Log | Backend</h7>
+<header class="material-header">
+  <div class="material-header-row">
+    <material-button icon class="material-drawer-button" (trigger)="drawer.toggle()">
+      <material-icon icon="menu"></material-icon>
+    </material-button>
+    <span class="material-header-title">Arido Car Log | Backend</span>
+    <div class="material-spacer"></div>
+    <div id="sign-in" *ngIf="usersService.user == null" class="horiz">
+      <material-button (trigger)="usersService.signIn()">Sign In</material-button>
+    </div>
+    <img class="icon" [src]="usersService.user?.photoURL" *ngIf="usersService.user != null" />
+    <div id="user-name" *ngIf="usersService.user != null">{{usersService.user?.displayName}}</div>
+  </div>
+</header>

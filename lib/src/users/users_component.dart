@@ -13,7 +13,6 @@ import 'users_service.dart';
     CORE_DIRECTIVES,
     materialDirectives,
   ],
-  providers: const [UsersService],
 )
 class UsersComponent implements OnInit {
   

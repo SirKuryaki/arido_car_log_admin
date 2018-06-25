@@ -4,6 +4,7 @@ import 'package:angular_router/angular_router.dart';
 
 import 'src/todo_list/todo_list_component.dart';
 import 'src/users/users_component.dart';
+import 'src/users/users_service.dart';
 import 'src/header/header_component.dart';
 
 // AngularDart info: https://webdev.dartlang.org/angular
@@ -14,7 +15,7 @@ import 'src/header/header_component.dart';
   styleUrls: const ['app_component.css'],
   templateUrl: 'app_component.html',
   directives: const [ROUTER_DIRECTIVES, HeaderComponent],
-  providers: const [materialProviders],
+  providers: const [materialProviders, UsersService],
 )
 @RouteConfig(const [
   const Route(path: '/users', name: 'Users', component: UsersComponent),
