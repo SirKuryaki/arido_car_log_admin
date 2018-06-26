@@ -1,4 +1,4 @@
-<header class="material-header">
+<header class="material-header shadow">
   <div class="material-header-row">
     <material-button icon class="material-drawer-button" (trigger)="drawer.toggle()">
       <material-icon icon="menu"></material-icon>
@@ -12,3 +12,19 @@
     <div id="user-name" *ngIf="usersService.user != null">{{usersService.user?.displayName}}</div>
   </div>
 </header>
+<material-drawer persistent #drawer="drawer">
+  <material-list *deferredContent>
+    <div group>
+      <material-list-item [routerLink]="['Todo']" (trigger)="drawer.toggle()">
+        <material-icon icon="playlist_add_check"></material-icon>Todo list
+      </material-list-item>
+      <material-list-item [routerLink]="['Users']" (trigger)="drawer.toggle()">
+        <material-icon icon="group"></material-icon>Active users
+      </material-list-item>
+    </div>
+    <div group *ngIf="usersService.user != null">
+      <material-list-item (trigger)="usersService.signOut()" (trigger)="drawer.toggle()">
+        <material-icon icon="exit_to_app"></material-icon>Sign out</material-list-item>
+    </div>
+  </material-list>
+</material-drawer>

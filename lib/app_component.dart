@@ -14,7 +14,11 @@ import 'src/header/header_component.dart';
   selector: 'my-app',
   styleUrls: const ['app_component.css'],
   templateUrl: 'app_component.html',
-  directives: const [ROUTER_DIRECTIVES, HeaderComponent],
+  directives: const [
+    ROUTER_DIRECTIVES,
+    MaterialPersistentDrawerDirective,
+    HeaderComponent
+  ],
   providers: const [materialProviders, UsersService],
 )
 @RouteConfig(const [

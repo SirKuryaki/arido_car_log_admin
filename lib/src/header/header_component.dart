@@ -1,5 +1,6 @@
 import 'package:angular/angular.dart';
 import 'package:angular_components/angular_components.dart';
+import 'package:angular_router/angular_router.dart';
 import '../users/users_service.dart';
 
 @Component(
@@ -10,6 +11,7 @@ import '../users/users_service.dart';
   ],
   templateUrl: 'header_component.html',
   directives: const [
+    ROUTER_DIRECTIVES,
     CORE_DIRECTIVES,
     materialDirectives,
   ],
